@@ -35,8 +35,12 @@ public:
     void add(Flow* f);
     void print();
     void run();
+    void run(int inicial, int final);
     void run(Flow* f);
     void remove(System s);
+    void test1();
+    void test2();
+    void test3();
     Model(){}
     ~Model(){}
 

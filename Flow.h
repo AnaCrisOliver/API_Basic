@@ -12,6 +12,7 @@ class Flow {
 private:
     System* source;
     System* terminal;
+    double energy;
     char function;
 public:
 
@@ -36,9 +37,19 @@ public:
 
     void set_terminal_value(double v);
 
+    void set_source_value(double v);
+
+    double get_terminal_value();
+
+    double get_source_value();
+
     double calculate();
 
     double calculate(int exp);
+
+    void set_energy(double v);
+
+    double get_energy();
 
 };
 

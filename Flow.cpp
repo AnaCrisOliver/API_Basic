@@ -39,6 +39,22 @@ void Flow::set_terminal_value(double v)
     terminal->setConservativeValue(v);
 }
 
+void Flow::set_source_value(double v)
+{
+    source->setConservativeValue(v);
+}
+
+
+double Flow::get_terminal_value()
+{
+    return terminal->getConservativeValue();
+}
+
+double Flow::get_source_value()
+{
+   return source->getConservativeValue();
+}
+
 //Calculates exponential
 double Flow::calculate(int exp)
 {
@@ -47,17 +63,23 @@ double Flow::calculate(int exp)
 
 double Flow::calculate()
 {
+
     switch (Flow::function){
+
+        case 'x':
+            //exponencial function
+            return source->getConservativeValue() * 0.01;
+        case 'l': //logistic function
+            return (0.01 * terminal->getConservativeValue()) * (1- (terminal->getConservativeValue()/70));
+            //FICTION FUNCTIONS HERE
         case 'f':
             //Calculate natural logarithm
             return log(source->getConservativeValue());
         case 'g':
             //Calculate Population Grow
             return source->getConservativeValue()* 0.3;
-
         case 'r':
             return source->getConservativeValue() + 4.0;
-
         case 't':
             return source->getConservativeValue() + 3.33;
         case 'u':
@@ -65,11 +87,8 @@ double Flow::calculate()
         case 'v':
             return source->getConservativeValue() - 3;
         case 'e':
-            return pow(source->getConservativeValue(),2);
-
-        case 'l': //logistic function
-            return pow(source->getConservativeValue(),2);
-
+           return pow(source->getConservativeValue(),2);
+        
 
     }
 }
@@ -80,4 +99,14 @@ char Flow::get_Function() const {
 
 void Flow::set_Function(char f) {
     Flow::function = f;
+}
+
+void Flow::set_energy(double v)
+{
+    energy = v;
+}
+
+double Flow::get_energy()
+{
+    return energy;
 }
