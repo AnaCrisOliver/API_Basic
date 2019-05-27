@@ -1,18 +1,25 @@
 #include <iostream>
-#include <cmath>
-#include "System.cpp"
-#include "Model.cpp"
-#include "Flow.cpp"
+#include "system.h"
+#include "systemimpl.h"
+#include "modelimpl.h"
+#include "flowimpl.h"
+#include "systemimpltest.h"
+#include "modelimpltest.h"
 
-//TEST1 - SIMPLE MODEL TO CALCULATE EXPONENTIAL
-//TEST2 - SIMPLE MODEL TO CALCULATE LOGISTIC
-//TEST3 - BIG MODEL WITH EXPONENTIAL
+using namespace std;
 
-int main() {
-    Model m1,m2,m3;
-    m1.test1();
-    m2.test2();
-    m3.test3();
-    cout<<"TESTED WITH SUCESS"<<endl;
+int main()
+{
+    SystemImplTest test1;
+    ModelImplTest test2;
+    System *s = new SystemImpl();
+    test1.unit_set_energy();
+    test1.unit_get_energy();
+    test1.unit_constructor();
+    test2.unit_add_flow();
+    test2.unit_add_system();
+    test2.unit_remove_flow();
+    test2.unit_remove_system();
+    cout << "Hello World!" << endl;
+    return 0;
 }
-
